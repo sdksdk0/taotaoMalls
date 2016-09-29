@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cn.tf.taotao</groupId>
+    <artifactId>taotao-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>cn.tf.taotao</groupId>
+  <artifactId>taotao-manager</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+<!-- 依赖管理 -->
+	<dependencies>
+		<dependency>
+			 <groupId>cn.tf.taotao</groupId>
+			  <artifactId>taotao-common</artifactId>
+			  <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>taotao-manager-pojo</module>
+		<module>taotao-manager-mapper</module>
+		<module>taotao-manager-service</module>
+		<module>taotao-manager-web</module>
+	</modules>
+	
+	
+	<build>
+		<!-- 配置插件 -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<port>8083</port>
+					<path>/taotao</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
