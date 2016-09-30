@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <table class="easyui-datagrid" id="itemList" title="商品列表" 
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'${pageContext.request.contextPath }/item/list',method:'get',pageSize:20,toolbar:toolbar">
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/item/list',method:'get',pageSize:20,toolbar:toolbar">
     <thead>
         <tr>
         	<th data-options="field:'ck',checkbox:true"></th>
