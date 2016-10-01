@@ -50,7 +50,7 @@ public class PictureServiceImpl implements PictureService{
 		newName=newName+oldName.substring(oldName.lastIndexOf("."));
 		//图片上传
 		
-		String imagePath=new DateTime().toString();
+		String imagePath=new DateTime().toString("/yyyy/MM/dd");
 			boolean result=FtpUtil.uploadFile(FTP_ADDRESS, FTP_PORT, FTP_USERNAME, FTP_PASSWORD, FTP_BASE_PATH, 
 					imagePath, newName, uploadFile.getInputStream());
 		
@@ -60,7 +60,8 @@ public class PictureServiceImpl implements PictureService{
 				return resultMap;
 			}
 			resultMap.put("error", 0);
-			resultMap.put("url",IMAGE_BASE_URL+imagePath+"/"+newName);			
+		/*	resultMap.put("url",IMAGE_BASE_URL+imagePath+"/"+newName);*/			
+		    resultMap.put("url","http://192.168.44.135/images/"+imagePath+"/"+newName);			
 			
 			return resultMap;
 		
