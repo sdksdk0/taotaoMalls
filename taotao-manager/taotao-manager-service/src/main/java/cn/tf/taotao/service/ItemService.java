@@ -9,5 +9,5 @@ public interface  ItemService {
 
 	EUDResult getItemList(int page,int rows);
 	
-	TaotaoResult createItem(TbItem item);
+	TaotaoResult createItem(TbItem item,String desc,String itemparam) throws Exception;
 }

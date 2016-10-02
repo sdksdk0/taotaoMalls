@@ -71,8 +71,8 @@
 		itemAddEditor = TAOTAO.createEditor("#itemAddForm [name=desc]");
 		//初始化类目选择和图片上传器
 		TAOTAO.init({fun:function(node){
-			//根据商品的分类id取商品 的规格模板，生成规格信息。第四天内容。
-			//TAOTAO.changeItemParam(node, "itemAddForm");
+			//根据商品的分类id取商品 的规格模板，生成规格信息。
+			TAOTAO.changeItemParam(node, "itemAddForm");
 		}});
 	});
 	//提交表单
@@ -87,7 +87,7 @@
 		//同步文本框中的商品描述
 		itemAddEditor.sync();
 		//取商品的规格
-		/*
+		
 		var paramJson = [];
 		$("#itemAddForm .params li").each(function(i,e){
 			var trs = $(e).find("tr");
@@ -108,7 +108,7 @@
 		//把json对象转换成字符串
 		paramJson = JSON.stringify(paramJson);
 		$("#itemAddForm [name=itemParams]").val(paramJson);
-		*/
+		
 		//ajax的post方式提交表单
 		//$("#itemAddForm").serialize()将表单序列号为key-value形式的字符串
 		$.post("/item/save",$("#itemAddForm").serialize(), function(data){

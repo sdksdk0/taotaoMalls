@@ -28,9 +28,11 @@
 		<ul>
 			<li>
 				<input class="easyui-textbox" style="width: 150px;" name="group"/>&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton addParam"  title="添加参数" data-options="plain:true,iconCls:'icon-add'"></a>
+				<a href="javascript:void(0)" class="easyui-linkbutton delParam" title="删除" data-options="plain:true,iconCls:'icon-cancel'"></a>	
 			</li>
 			<li>
-				<span>|-------</span><input  style="width: 150px;" class="easyui-textbox" name="param"/>&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton delParam" title="删除" data-options="plain:true,iconCls:'icon-cancel'"></a>						
+				<span>|-------</span><input  style="width: 150px;" class="easyui-textbox" name="param"/>&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton delParam" title="删除" data-options="plain:true,iconCls:'icon-cancel'"></a>						
 			</li>
 		</ul>
 	</li>
@@ -65,6 +67,7 @@
 			  });
 			  temple.find(".delParam").click(function(){
 				  $(this).parent().remove();
+				  
 			  });
 		 });
 		
@@ -77,7 +80,7 @@
 			var groups = $("#itemParamAddTable [name=group]");
 			groups.each(function(i,e){
 				var p = $(e).parentsUntil("ul").parent().find("[name=param]");
-				var _ps = [];
+				var _ps = []; 
 				p.each(function(_i,_e){
 					var _val = $(_e).siblings("input").val();
 					if($.trim(_val).length>0){
