@@ -6,8 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.mapper.TbItemParamMapper;
+import cn.tf.taotao.po.TbItem;
+import cn.tf.taotao.po.TbItemExample;
 import cn.tf.taotao.po.TbItemParam;
 import cn.tf.taotao.po.TbItemParamExample;
 import cn.tf.taotao.po.TbItemParamExample.Criteria;
@@ -45,6 +51,22 @@ public class ItemParamServiceImpl implements ItemParamService{
 		itemParamMapper.insert(itemParam);
 
 		return TaotaoResult.ok();
+	}
+
+	//分页查询
+	@Override
+	public EUDResult getItemList(int page, int rows) {
+		TbItemParamExample example=new TbItemParamExample();
+		PageHelper.startPage(page, rows);
+		
+		
+		List<TbItemParam> list = itemParamMapper.selectByExample(example);
+
+		EUDResult result=new EUDResult();
+		result.setRows(list);
+		PageInfo<TbItemParam>  pageInfo=new PageInfo<TbItemParam>(list);
+		result.setTotal(pageInfo.getTotal());
+		return result;
 	}
 
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.po.TbItemParam;
 import cn.tf.taotao.service.ItemParamService;
@@ -37,8 +38,13 @@ public class ItemParamController {
 		itemParam.setParamData(paramData);
 		TaotaoResult result = itemParamService.insertItemParam(itemParam);
 		return result;
-		
-		
+	}
+	
+	@RequestMapping("/list")
+	@ResponseBody
+	public EUDResult getItemList(Integer page,Integer rows){
+		EUDResult result = itemParamService.getItemList(page, rows);
+		return result;
 	}
 	
 
