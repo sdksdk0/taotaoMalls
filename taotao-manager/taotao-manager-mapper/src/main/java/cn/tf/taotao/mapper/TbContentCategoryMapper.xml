@@ -103,6 +103,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.tf.taotao.po.TbContentCategory" >
+    <selectKey  keyProperty="id"  resultType="Long"  order="AFTER">
+    		select last_insert_id()
+    </selectKey>
+    
     insert into tb_content_category (id, parent_id, name, 
       status, sort_order, is_parent, 
       created, updated)
