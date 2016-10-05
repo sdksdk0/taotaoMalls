@@ -112,4 +112,16 @@ public class TbContent {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+	@Override
+	public String toString() {
+		return "TbContent [id=" + id + ", categoryId=" + categoryId
+				+ ", title=" + title + ", subTitle=" + subTitle
+				+ ", titleDesc=" + titleDesc + ", url=" + url + ", pic=" + pic
+				+ ", pic2=" + pic2 + ", created=" + created + ", updated="
+				+ updated + ", content=" + content + "]";
+	}
+    
+    
+    
 }
