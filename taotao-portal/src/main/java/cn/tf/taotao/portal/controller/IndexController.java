@@ -1,6 +1,7 @@
 package cn.tf.taotao.portal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,10 +28,12 @@ public class IndexController {
 	}
 	
 	//模拟post请求
-	@RequestMapping(value="/httpclient/post",method=RequestMethod.POST)
+	@RequestMapping(value="/httpclient/post",method=RequestMethod.POST,produces=MediaType.TEXT_PLAIN_VALUE+";charset=utf-8")
 	@ResponseBody
-	public String tesePost(String username,String password){
-		return username+"_"+password;
+	public TaotaoResult  tesePost(String username,String password){
+		String result=username+"_"+password;
+		System.out.println(result);
+		return TaotaoResult.ok(result);
 	}
 	
 	

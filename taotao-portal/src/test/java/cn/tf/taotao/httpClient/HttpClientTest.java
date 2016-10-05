@@ -63,11 +63,12 @@ public class HttpClientTest {
 	}
 	
 	
+	 
 	@Test
 	public void doPost() throws ClientProtocolException, IOException{
 		CloseableHttpClient httpClient=HttpClients.createDefault();
 		//创建一个post对象
-		HttpPost post=new HttpPost("http://localhost:8085/httpclient/post.html");
+		HttpPost post=new HttpPost("http://localhost:8085/httpclient/post.action");
 		
 		CloseableHttpResponse response = httpClient.execute(post);
 		String string = EntityUtils.toString(response.getEntity());
@@ -80,7 +81,7 @@ public class HttpClientTest {
 	public void doPostWithParam() throws ClientProtocolException, IOException{
 		CloseableHttpClient httpClient=HttpClients.createDefault();
 		//创建一个post对象
-		HttpPost post=new HttpPost("http://localhost:8085/httpclient/post.html");
+		HttpPost post=new HttpPost("http://localhost:8085/httpclient/post.action");
 		List<NameValuePair> kvList=new ArrayList<>();
 		kvList.add(new BasicNameValuePair("username", "张三"));
 		kvList.add(new BasicNameValuePair("password", "123"));
