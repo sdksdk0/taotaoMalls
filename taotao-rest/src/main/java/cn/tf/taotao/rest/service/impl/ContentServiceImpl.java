@@ -28,7 +28,7 @@ public class ContentServiceImpl implements  ContentService{
 	@Autowired
 	private JedisClientCluster jedisClientCluster;
 	
-	@Value("{INDEX_CONTENT_REDIS_KEY}")
+	@Value("${INDEX_CONTENT_REDIS_KEY}")
 	private String INDEX_CONTENT_REDIS_KEY;
 	
 
@@ -46,7 +46,7 @@ public class ContentServiceImpl implements  ContentService{
 			}
 		
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 
 		

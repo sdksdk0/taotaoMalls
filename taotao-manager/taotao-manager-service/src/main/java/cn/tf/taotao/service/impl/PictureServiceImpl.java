@@ -52,7 +52,7 @@ public class PictureServiceImpl implements PictureService{
 				return resultMap;
 			}
 			resultMap.put("error", 0);
-			resultMap.put("url", "http://115.28.16.234/images" + imagePath + "/" + newName);
+			resultMap.put("url", IMAGE_BASE_URL + imagePath + "/" + newName);
 			return resultMap;
 		} catch (Exception e) {
 			resultMap.put("error", 1);
