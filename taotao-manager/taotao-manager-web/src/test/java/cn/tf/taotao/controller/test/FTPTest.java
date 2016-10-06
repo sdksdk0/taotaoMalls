@@ -16,8 +16,8 @@ public class FTPTest {
 		//创建一个FtpClient对象
 		FTPClient  ftpClient=new FTPClient();
 		//创建FTP连接
-		ftpClient.connect("192.168.44.135",21);
-		ftpClient.login("ftpuser", "ftpuser");
+		ftpClient.connect("115.28.16.234",21);
+		ftpClient.login("ftpuser", "123456");
 		
 		FileInputStream inputStream=new FileInputStream(new File("C:\\Users\\asus\\Pictures\\pic\\a1.jpg"));
 		ftpClient.changeWorkingDirectory("/home/ftpuser/www/images");

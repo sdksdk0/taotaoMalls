@@ -12,8 +12,6 @@ import com.github.pagehelper.PageInfo;
 import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.mapper.TbItemParamMapper;
-import cn.tf.taotao.po.TbItem;
-import cn.tf.taotao.po.TbItemExample;
 import cn.tf.taotao.po.TbItemParam;
 import cn.tf.taotao.po.TbItemParamExample;
 import cn.tf.taotao.po.TbItemParamExample.Criteria;

@@ -3,6 +3,8 @@ package cn.tf.taotao;
 import java.util.HashSet;
 
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
@@ -11,17 +13,17 @@ import redis.clients.jedis.JedisPool;
 
 public class JedisTest {
 	
-	//单机
+/*	//单机
 	@Test
 	public void tets1(){
 		//创建一个jedis的对象
 		//调用jedis对象的方法，方法名称和redis的命令一样
 		Jedis jedis=new Jedis("115.28.16.234",6379);
-		jedis.set("key1", "jedis test");
+		jedis.set("key6", "jedis test");
 		String string=jedis.get("key1");
 		System.out.println(string);
 		jedis.close();
-	}
+	}*/
 	
 	//使用连接池
 	@Test
@@ -52,8 +54,17 @@ public class JedisTest {
 		String string=cluster.get("key1");
 		System.out.println(string);
 		cluster.close();
-		
-		
+			
+	}
+	
+	
+	@Test
+	public void test4(){
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+		JedisCluster jedisCluster =  (JedisCluster) applicationContext.getBean("redisClient");
+		String string = jedisCluster.get("key1");
+		System.out.println(string);
+		jedisCluster.close();
 	}
 	
 	
