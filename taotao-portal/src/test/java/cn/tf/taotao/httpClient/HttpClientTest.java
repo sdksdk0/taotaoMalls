@@ -35,7 +35,7 @@ public class HttpClientTest {
 		HttpEntity entity = response.getEntity();
 		String string = EntityUtils.toString(entity,"utf-8");
 		System.out.println(string);
-		
+		 
 		//关闭
 		response.close();
 		httpClient.close();
