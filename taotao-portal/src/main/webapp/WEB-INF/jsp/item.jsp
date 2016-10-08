@@ -208,15 +208,7 @@
 </ul>
 			</div>
 			<div class="mc" data-widget="tab-content" id="product-detail-1">
-				<ul class="detail-list">
-					<li title="长虹LED42538ES">商品名称：长虹LED42538ES</li>
-					<li>商品编号：1221882</li>
-					<li>品牌：<a href="http://www.jd.com/pinpai/798-20710.html" target="_blank">长虹（CHANGHONG）</a></li>
-					<li>上架时间：2014-09-24 15:45:26</li>
-					<li>商品毛重：13.5kg</li>
-					<li>商品产地：中国大陆</li>
-										<li>分辨率：全高清（1920*1080）</li><li>居室场景：卧室电视 ，客厅电视</li><li>品类：LED电视（主流）</li><li>3D：不支持</li><li>功能：普通电视</li><li>尺寸：40-43英寸</li>
-				</ul>
+				
 				<div class="detail-correction">
 					<b></b>如果您发现商品信息不准确，欢迎纠错
 				</div>
