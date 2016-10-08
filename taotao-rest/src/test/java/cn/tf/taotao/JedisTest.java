@@ -26,7 +26,7 @@ public class JedisTest {
 	}*/
 	
 	//使用连接池
-	@Test
+	/*@Test
 	public void test2(){
 		//创建jedis连接池
 		JedisPool pool=new JedisPool("115.28.16.234",6379);
@@ -35,11 +35,11 @@ public class JedisTest {
 		String string=jedis.get("key1");
 		System.out.println(string);
 		jedis.close();
-	}
+	}*/
 	
 	
 	//集群
-	@Test
+	/*@Test
 	public void tese3(){
 		HashSet<HostAndPort> nodeSet=new HashSet<>();
 		nodeSet.add(new HostAndPort("115.28.16.234",7001));
@@ -65,7 +65,7 @@ public class JedisTest {
 		String string = jedisCluster.get("key1");
 		System.out.println(string);
 		jedisCluster.close();
-	}
+	}*/
 	
 	
 
