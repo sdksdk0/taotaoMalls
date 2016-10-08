@@ -1,4 +1,4 @@
-package cn.tf.taotao.search.service;
+package cn.tf.taotao.search.service.impl;
 
 import java.io.IOException;
 import java.util.List;
@@ -7,12 +7,15 @@ import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.tf.taotao.common.utils.ExceptionUtil;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.search.mapper.ItemMapper;
 import cn.tf.taotao.search.pojo.Item;
+import cn.tf.taotao.search.service.ItemService;
 
+@Service
 public class ItemServiceImpl implements ItemService{
 
 	@Autowired
@@ -22,10 +25,11 @@ public class ItemServiceImpl implements ItemService{
 	private SolrServer  solrServer;
 	
 	@Override
-	public TaotaoResult importAllItems() throws SolrServerException, IOException {
-		List<Item> list=itemMapper.searchItemList();
+	public TaotaoResult importAllItems()  {
 		
 		try {
+			List<Item> list=itemMapper.getItemList();
+			
 			for (Item item : list) {
 				SolrInputDocument  document=new SolrInputDocument();
 				document.setField("id", item.getId());
