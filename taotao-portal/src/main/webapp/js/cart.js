@@ -6,7 +6,7 @@ var TTCart = {
 		$(".increment").click(function(){//＋
 			var _thisInput = $(this).siblings("input");
 			_thisInput.val(eval(_thisInput.val()) + 1);
-			$.post("/cart/update/num/"+_thisInput.attr("itemId")+"/"+_thisInput.val() + ".action",function(data){
+			$.post("/cart/add/"+_thisInput.attr("itemId")+ ".html?num=1",function(data){
 				TTCart.refreshTotalPrice();
 			});
 		});
@@ -16,7 +16,7 @@ var TTCart = {
 				return ;
 			}
 			_thisInput.val(eval(_thisInput.val()) - 1);
-			$.post("/cart/update/num/"+_thisInput.attr("itemId")+"/"+_thisInput.val() + ".action",function(data){
+			$.post("/cart/add/"+_thisInput.attr("itemId")+ ".html?num=-1",function(data){
 				TTCart.refreshTotalPrice();
 			});
 		});
