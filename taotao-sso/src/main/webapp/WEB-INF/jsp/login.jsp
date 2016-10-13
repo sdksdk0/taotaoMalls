@@ -11,7 +11,7 @@
 <body>
 <div class="w">
     <div id="logo">
-    	<a href="http://localhost:8085" clstag="passport|keycount|login|01">
+    	<a href="http://sso.tianfang1314.cn" clstag="passport|keycount|login|01">
     		<img src="/images/taotao-logo.gif" alt="淘淘" width="170" height="60"/>
     	</a><b></b>
    	</div>
@@ -79,7 +79,7 @@
 					if (data.status == 200) {
 						//alert("登录成功！");
 						if (redirectUrl == "") {
-							location.href = "http://localhost:8085";
+							location.href = "http://taotao.tianfang1314.cn";
 						} else {
 							location.href = redirectUrl;
 						}

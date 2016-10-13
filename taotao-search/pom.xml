@@ -78,7 +78,10 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
 					<port>8086</port>
-					<path>/</path>
+					<path>/search</path>
+					<url>http://115.28.16.234:8101/manager/text</url>
+					<username>tf</username>
+					<password>admin1</password>
 				</configuration>
 			</plugin>
   	</plugins>

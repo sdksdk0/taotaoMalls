@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 public class HttpClientTest {
 	
-	@Test
+	/*@Test
 	public void doGet() throws ClientProtocolException, IOException{
 		
 		//创建一个httpclient对象
@@ -95,5 +95,5 @@ public class HttpClientTest {
 		response.close();
 		httpClient.close();
 	}
-
+*/
 }

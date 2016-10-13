@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class FTPTest {
 	
-	@Test
+	/*@Test
 	public void test1() throws Exception{
 		//创建一个FtpClient对象
 		FTPClient  ftpClient=new FTPClient();
@@ -25,7 +25,7 @@ public class FTPTest {
 		ftpClient.storeFile("hello1.jpg", inputStream);
 		//关闭连接
 		ftpClient.logout();
-	}
+	}*/
 	
 	
 	
