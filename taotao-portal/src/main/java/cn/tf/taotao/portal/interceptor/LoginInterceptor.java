@@ -26,11 +26,12 @@ public class LoginInterceptor implements  HandlerInterceptor{
 		TbUser user = userServiceImpl.getUserByToken(token);
 		if(null==user){
 			//调到登录页面
-			response.sendRedirect(userServiceImpl.SSO_BASE_URL+userServiceImpl.SSO_PAGE_LOGIN
+			response.sendRedirect(userServiceImpl.SSO_INTERCEPTOR+userServiceImpl.SSO_PAGE_LOGIN
 					+"?redirect="+request.getRequestURI());
 			return false;
 		}
-		
+		//把用户信息放入Request
+		request.setAttribute("user", user);
 		return true;
 	}
 

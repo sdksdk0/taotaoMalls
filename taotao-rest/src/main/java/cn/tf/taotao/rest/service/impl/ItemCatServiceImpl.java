@@ -36,6 +36,14 @@ public class ItemCatServiceImpl implements ItemCatService{
 		Criteria criteria = example.createCriteria();
 		criteria.andParentIdEqualTo(parentId);
 		
+		
+		
+		
+		
+		
+		
+		
+		
 		List<TbItemCat> list = itemCatMapper.selectByExample(example);
 		//返回值list
 		List resultList=new ArrayList<>();
