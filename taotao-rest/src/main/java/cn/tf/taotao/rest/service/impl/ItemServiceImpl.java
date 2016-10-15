@@ -30,6 +30,8 @@ public class ItemServiceImpl implements ItemService {
 
 	@Autowired
 	private JedisClient jedisClient;
+	
+
 
 	@Value("${REDIS_ITEM_KEY}")
 	private String REDIS_ITEM_KEY;
