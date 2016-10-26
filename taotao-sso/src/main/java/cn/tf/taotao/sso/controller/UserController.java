@@ -28,7 +28,7 @@ public class UserController {
 	
 	@RequestMapping("/check/{param}/{type}")
 	@ResponseBody
-public Object checkData(@PathVariable String param, @PathVariable Integer type, String callback) {
+	public Object checkData(@PathVariable String param, @PathVariable Integer type, String callback) {
 		
 		TaotaoResult result = null;
 		
@@ -121,8 +121,6 @@ public Object checkData(@PathVariable String param, @PathVariable Integer type, 
 			mappingJacksonValue.setJsonpFunction(callback);
 			return mappingJacksonValue;
 		}
-		
-	
 	}
 	
 }

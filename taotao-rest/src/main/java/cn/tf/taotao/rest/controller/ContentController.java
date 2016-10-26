@@ -26,7 +26,6 @@ public class ContentController {
 	public TaotaoResult getContentList(@PathVariable Long cid){
 		try {
 			List<TbContent> list = contentService.getContentList(cid);
-			
 			return TaotaoResult.ok(list);
 		} catch (Exception e) {
 			e.printStackTrace();
