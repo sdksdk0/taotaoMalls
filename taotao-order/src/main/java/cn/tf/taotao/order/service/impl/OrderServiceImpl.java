@@ -72,6 +72,7 @@ public class OrderServiceImpl implements OrderService {
 			tbOrderItem.setId(orderDetailId+"");
 			
 			//向订单明细插入到记录
+			tbOrderItem.setOrderId(orderId+"");
 			orderItemMapper.insert(tbOrderItem);
 		}
 		//插入物流表
@@ -81,7 +82,7 @@ public class OrderServiceImpl implements OrderService {
 		orderShipping.setCreated(date);
 		orderShippingMapper.insert(orderShipping);
 		
-		return TaotaoResult.ok();
+		return TaotaoResult.ok(orderId);
 	}
 
 }
