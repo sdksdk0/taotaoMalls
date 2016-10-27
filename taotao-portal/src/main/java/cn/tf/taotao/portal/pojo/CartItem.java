@@ -38,7 +38,7 @@ public class CartItem {
 		this.image = image;
 	}
 	
-
+	
 
 
 }
