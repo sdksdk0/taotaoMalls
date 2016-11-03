@@ -31,13 +31,8 @@ public class ItemCatServiceImpl implements ItemCatService{
 	@Autowired
 	private JedisClient jedisClient;
 	
-	//分类列表
-	@Value("${REDIS_CAT_ITEM1}")
-	private String REDIS_CAT_ITEM1;
-	
-	
-	@Value("${REDIS_CAT_ITEM2")
-	private String REDIS_CAT_ITEM2;
+	@Value("${INDEX_CATEGORY_REDIS_KEY}")
+	private String INDEX_CATEGORY_REDIS_KEY;
 	
 	
 	//过期时间设置
@@ -47,6 +42,22 @@ public class ItemCatServiceImpl implements ItemCatService{
 	@Override
 	public CatResult getItemCatList() {
 		CatResult catResult=new CatResult();
+		
+		
+		try {
+			// 添加redis业务
+			// 1.先在redis中查询 ，如果有值，直接返回
+			String resultString = jedisClient.get(INDEX_CATEGORY_REDIS_KEY);
+			if (!StringUtils.isBlank(resultString)) {
+				catResult.setData(JsonUtils.jsonToList(resultString,
+						CatNode.class));
+				return catResult;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
 		//查询分类列表
 		catResult.setData(getCatList(0));
 		return catResult;
@@ -90,6 +101,13 @@ public class ItemCatServiceImpl implements ItemCatService{
 				resultList.add("/products/"+tbItemCat.getId()+".html|"+tbItemCat.getName());
 			}
 		}
+		
+		// 3. 查询完mysql后，将查询结果存入到redis中
+		jedisClient.set(INDEX_CATEGORY_REDIS_KEY,
+			JsonUtils.objectToJson(resultList));
+		
+		jedisClient.expire(INDEX_CATEGORY_REDIS_KEY,
+				REDIS_ITEM_EXPIRE);
 
 		return resultList;
 	}
