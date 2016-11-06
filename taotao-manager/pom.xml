@@ -35,9 +35,9 @@
 				<configuration>
 					<port>8083</port>
 					<path>/</path>
-					<url>http://115.28.16.234:8100/manager/text</url>
+					<!-- <url>http://139.199.158.214:8100/manager/text</url>
 					<username>tf</username>
-					<password>admin1</password>	
+					<password>admin1</password>	 -->
 				</configuration>
 			</plugin>
 		</plugins>

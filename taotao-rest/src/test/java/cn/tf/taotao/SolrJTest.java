@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class SolrJTest {
 	
-	@Test
+	/*@Test
 	public void addDocument() throws SolrServerException, IOException{
 		
 		//创建一个连接
@@ -63,6 +63,6 @@ public class SolrJTest {
 		
 	}
 	
-	
+	*/
 
 }

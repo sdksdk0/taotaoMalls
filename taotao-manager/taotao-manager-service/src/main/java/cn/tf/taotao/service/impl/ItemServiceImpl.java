@@ -1,5 +1,6 @@
 package cn.tf.taotao.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import cn.tf.taotao.mapper.TbItemMapper;
 import cn.tf.taotao.mapper.TbItemParamItemMapper;
 import cn.tf.taotao.po.TbItem;
 import cn.tf.taotao.po.TbItemDesc;
+import cn.tf.taotao.po.TbItemDescExample;
 import cn.tf.taotao.po.TbItemExample;
 import cn.tf.taotao.po.TbItemExample.Criteria;
 import cn.tf.taotao.po.TbItemParamItem;
@@ -121,6 +123,42 @@ public class ItemServiceImpl implements ItemService{
 		itemParamItemMapper.insert(itemParamItem);
 		return TaotaoResult.ok();
 		
+	}
+
+
+
+	//删除商品
+	@Override
+	public TaotaoResult deleteItem(String ids) {
+		try {
+			String[] idsArray = ids.split(",");
+			List<Long> values = new ArrayList<Long>();
+			for(String id : idsArray) {
+				values.add(Long.parseLong(id));
+			}
+			TbItemExample e = new TbItemExample();
+			TbItemExample.Criteria c = e.createCriteria();
+			c.andIdIn(values);
+			itemMapper.deleteByExample(e);
+			
+			
+			TbItemDescExample de = new TbItemDescExample();
+			cn.tf.taotao.po.TbItemDescExample.Criteria dc = de.createCriteria();
+			dc.andItemIdIn(values);
+			itemDescMapper.deleteByExample(de);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return TaotaoResult.ok();
+	}
+
+
+
+	//加载商品描述
+	@Override
+	public TbItemDesc listItemDesc(Long id) {
+		return itemDescMapper.selectByPrimaryKey(id);
 	}
 	
 

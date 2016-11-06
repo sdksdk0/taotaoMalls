@@ -12,7 +12,7 @@ public class SolrCloudTest {
 	@Test
 	public void test1() throws SolrServerException, IOException{
 		//创建一个连接，和solr集群的,参数就是zookeeper的地址列表，
-		String zkHost="115.28.16.234:2181,115.28.16.234:2182,115.28.16.234:2183";
+		String zkHost="139.199.158.214:2181,139.199.158.214:2182,139.199.158.214:2183";
 		CloudSolrServer   solrServer=new CloudSolrServer(zkHost);
 		//设置默认的collection2
 		solrServer.setDefaultCollection("collection2");
@@ -34,7 +34,7 @@ public class SolrCloudTest {
 	@Test
 	public void test2() throws SolrServerException, IOException{
 		//创建一个连接，和solr集群的,参数就是zookeeper的地址列表，
-		String zkHost="115.28.16.234:2181,115.28.16.234:2182,115.28.16.234:2183";
+		String zkHost="139.199.158.214:2181,139.199.158.214:2182,139.199.158.214:2183";
 		CloudSolrServer   solrServer=new CloudSolrServer(zkHost);
 		//设置默认的collection2
 		solrServer.setDefaultCollection("collection2");

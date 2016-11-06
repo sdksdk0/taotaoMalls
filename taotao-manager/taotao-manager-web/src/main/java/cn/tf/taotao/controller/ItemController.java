@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.po.TbItem;
+import cn.tf.taotao.po.TbItemDesc;
 import cn.tf.taotao.service.ItemService;
 
 
@@ -43,9 +44,23 @@ public class ItemController {
 	public TaotaoResult createItem(TbItem item,String desc,String itemParams) throws Exception{
 		TaotaoResult result=itemService.createItem(item,desc,itemParams);
 		return result;
+	}
+	
+	
+	//下架商品
+	@RequestMapping("/rest/item/delete")
+	@ResponseBody
+	public TaotaoResult  deleteItem(String ids){
+		return itemService.deleteItem(ids);
 		
 	}
 	
+	//商品描述
+	@RequestMapping("/rest/item/query/item/desc/{id}")
+	@ResponseBody
+	public TbItemDesc listItemDesc(@PathVariable Long id) {
+		return itemService.listItemDesc(id);
+	}
 	
 
 }

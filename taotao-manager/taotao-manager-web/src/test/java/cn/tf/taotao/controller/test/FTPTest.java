@@ -11,12 +11,12 @@ import org.junit.Test;
 
 public class FTPTest {
 	
-	/*@Test
+	@Test
 	public void test1() throws Exception{
 		//创建一个FtpClient对象
 		FTPClient  ftpClient=new FTPClient();
 		//创建FTP连接
-		ftpClient.connect("115.28.16.234",21);
+		ftpClient.connect("139.199.158.214",21);
 		ftpClient.login("ftpuser", "123456");
 		
 		FileInputStream inputStream=new FileInputStream(new File("C:\\Users\\asus\\Pictures\\pic\\a1.jpg"));
@@ -25,7 +25,7 @@ public class FTPTest {
 		ftpClient.storeFile("hello1.jpg", inputStream);
 		//关闭连接
 		ftpClient.logout();
-	}*/
+	}
 	
 	
 	

@@ -83,7 +83,7 @@
 				<configuration>
 					<port>8085</port>
 					<path>/</path>
-					<url>http://115.28.16.234:8102/manager/text</url>
+					<url>http://139.199.158.214:8102/manager/text</url>
 					<username>tf</username>
 					<password>admin1</password>
 				</configuration>

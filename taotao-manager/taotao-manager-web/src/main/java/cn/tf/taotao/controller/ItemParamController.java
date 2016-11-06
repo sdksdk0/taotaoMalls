@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
+import cn.tf.taotao.po.TbItemDesc;
 import cn.tf.taotao.po.TbItemParam;
 import cn.tf.taotao.service.ItemParamService;
 
@@ -46,6 +47,15 @@ public class ItemParamController {
 		EUDResult result = itemParamService.getItemList(page, rows);
 		return result;
 	}
+	
+	
+	//加载商品规格
+		@RequestMapping("/rest/item/param/item/query/{id}")
+		@ResponseBody
+		public TbItemParam listItemDesc(@PathVariable Long id) {
+			return itemParamService.listParamDesc(id);
+		}
+		
 	
 
 }

@@ -3,6 +3,7 @@ package cn.tf.taotao.service;
 import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.po.TbItem;
+import cn.tf.taotao.po.TbItemDesc;
 
 public interface  ItemService {
 	TbItem getItemById(long itemId);
@@ -10,4 +11,8 @@ public interface  ItemService {
 	EUDResult getItemList(int page,int rows);
 	
 	TaotaoResult createItem(TbItem item,String desc,String itemparam) throws Exception;
+
+	TaotaoResult deleteItem(String ids);
+
+	TbItemDesc listItemDesc(Long id);
 }

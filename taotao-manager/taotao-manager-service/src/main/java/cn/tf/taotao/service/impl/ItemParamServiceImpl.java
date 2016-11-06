@@ -67,4 +67,11 @@ public class ItemParamServiceImpl implements ItemParamService{
 		return result;
 	}
 
+
+	@Override
+	public TbItemParam listParamDesc(Long id) {
+		
+		return null;
+	}
+
 }
