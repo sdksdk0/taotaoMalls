@@ -10,6 +10,7 @@ import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.po.TbItemDesc;
 import cn.tf.taotao.po.TbItemParam;
+import cn.tf.taotao.po.TbItemParamItem;
 import cn.tf.taotao.service.ItemParamService;
 
 //参数模板，返回json数据
@@ -50,11 +51,11 @@ public class ItemParamController {
 	
 	
 	//加载商品规格
-		@RequestMapping("/rest/item/param/item/query/{id}")
-		@ResponseBody
-		public TbItemParam listItemDesc(@PathVariable Long id) {
-			return itemParamService.listParamDesc(id);
-		}
+	@RequestMapping("/item/query/{id}")
+	@ResponseBody
+	public TbItemParamItem listItemDesc(@PathVariable Long id) {
+		return itemParamService.listParamDesc(id);
+	}
 		
 	
 

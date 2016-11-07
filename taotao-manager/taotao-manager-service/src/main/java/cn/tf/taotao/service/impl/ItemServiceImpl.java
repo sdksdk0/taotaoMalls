@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import com.mysql.fabric.xmlrpc.base.Data;
 
 import cn.tf.taotao.common.pojo.EUDResult;
+import cn.tf.taotao.common.utils.ExceptionUtil;
 import cn.tf.taotao.common.utils.IDUtils;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.mapper.TbItemDescMapper;
@@ -21,6 +22,7 @@ import cn.tf.taotao.po.TbItem;
 import cn.tf.taotao.po.TbItemDesc;
 import cn.tf.taotao.po.TbItemDescExample;
 import cn.tf.taotao.po.TbItemExample;
+import cn.tf.taotao.po.TbItemParam;
 import cn.tf.taotao.po.TbItemExample.Criteria;
 import cn.tf.taotao.po.TbItemParamItem;
 import cn.tf.taotao.service.ItemService;
@@ -38,7 +40,6 @@ public class ItemServiceImpl implements ItemService{
 	private TbItemParamItemMapper  itemParamItemMapper;
 	
 	
-	
 	@Override
 	public TbItem getItemById(long itemId) {
 		//主键查询
@@ -54,7 +55,6 @@ public class ItemServiceImpl implements ItemService{
 			TbItem item=list.get(0);
 			return item;
 		}
-		
 		return null;
 	
 	}
@@ -130,6 +130,7 @@ public class ItemServiceImpl implements ItemService{
 	//删除商品
 	@Override
 	public TaotaoResult deleteItem(String ids) {
+		
 		try {
 			String[] idsArray = ids.split(",");
 			List<Long> values = new ArrayList<Long>();
@@ -159,6 +160,100 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public TbItemDesc listItemDesc(Long id) {
 		return itemDescMapper.selectByPrimaryKey(id);
+	}
+
+
+	//更新
+	@Override
+	public TaotaoResult updateItem(TbItem item, TbItemDesc desc, TbItemParamItem itemParams) {
+		try {
+			//更新商品
+			TbItemExample e = new TbItemExample();
+			Criteria c = e.createCriteria();
+			c.andIdEqualTo(item.getId());
+			item.setCreated(new Date());
+			item.setUpdated(new Date());
+			item.setStatus((byte)1);
+			itemMapper.updateByExample(item, e);
+			
+			//更新商品描述
+			TbItemDescExample de = new TbItemDescExample();
+			cn.tf.taotao.po.TbItemDescExample.Criteria criteria = de.createCriteria();
+			criteria.andItemIdEqualTo(item.getId());
+			desc.setItemId(item.getId());
+			desc.setCreated(new Date());
+			desc.setUpdated(new Date());
+			itemDescMapper.updateByExample(desc, de);
+			
+			//更新规格
+			/*TaotaoResult result=updateItemParamItem(itemId, itemparam);
+			if(result.getStatus()!=200){
+				throw new Exception();
+			}
+			return TaotaoResult.ok();*/
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
+		return TaotaoResult.ok();
+		
+	}
+
+
+	//下架商品
+	@Override
+	public TaotaoResult instockItem(String ids) {
+		
+		try {
+			String[] idsArray = ids.split(",");
+			List<Long> values = new ArrayList<Long>();
+			for(String id : idsArray) {
+				values.add(Long.parseLong(id));
+			}
+			TbItemExample e = new TbItemExample();
+			TbItemExample.Criteria c = e.createCriteria();
+			c.andIdIn(values);
+		
+			List<TbItem> list = itemMapper.selectByExample(e);
+			if(list!=null && list.size()>0){
+				TbItem item=list.get(0);
+				item.setStatus((byte)2);
+				itemMapper.updateByExample(item, e);
+			}
+			return TaotaoResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
+
+
+	@Override
+	public TaotaoResult reshelfItem(String ids) {
+		try {
+			String[] idsArray = ids.split(",");
+			List<Long> values = new ArrayList<Long>();
+			for(String id : idsArray) {
+				values.add(Long.parseLong(id));
+			}
+			TbItemExample e = new TbItemExample();
+			TbItemExample.Criteria c = e.createCriteria();
+			c.andIdIn(values);
+			List<TbItem> list = itemMapper.selectByExample(e);
+			if(list!=null && list.size()>0){
+				TbItem item=list.get(0);
+				item.setStatus((byte)1);
+				itemMapper.updateByExample(item, e);
+			}
+			return TaotaoResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 

@@ -11,6 +11,7 @@ import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.po.TbItem;
 import cn.tf.taotao.po.TbItemDesc;
+import cn.tf.taotao.po.TbItemParamItem;
 import cn.tf.taotao.service.ItemService;
 
 
@@ -47,7 +48,7 @@ public class ItemController {
 	}
 	
 	
-	//下架商品
+	//删除商品
 	@RequestMapping("/rest/item/delete")
 	@ResponseBody
 	public TaotaoResult  deleteItem(String ids){
@@ -62,5 +63,29 @@ public class ItemController {
 		return itemService.listItemDesc(id);
 	}
 	
+	//更新
+	@RequestMapping(value="/rest/item/update",method=RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult updateItem(TbItem item, TbItemDesc desc, TbItemParamItem itemParams){
+		
+		TaotaoResult result=itemService.updateItem(item,desc,itemParams);
+		return result;
+	}
+	
+	//下架
+	@RequestMapping("/rest/item/instock")
+	@ResponseBody
+	public TaotaoResult  instockItem(String ids){
+		return itemService.instockItem(ids);
+		
+	}
+	
+	//上架
+	@RequestMapping("/rest/item/reshelf")
+	@ResponseBody
+	public TaotaoResult  reshelfItem(String ids){
+		return itemService.reshelfItem(ids);
+		
+	}
 
 }

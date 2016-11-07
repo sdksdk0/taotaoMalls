@@ -4,6 +4,7 @@ import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.po.TbItemDesc;
 import cn.tf.taotao.po.TbItemParam;
+import cn.tf.taotao.po.TbItemParamItem;
 
 public interface ItemParamService {
 	
@@ -12,6 +13,6 @@ public interface ItemParamService {
 	
 	EUDResult getItemList(int page,int rows);
 	
-	TbItemParam listParamDesc(Long id);
+	TbItemParamItem listParamDesc(Long id);
 	
 }
