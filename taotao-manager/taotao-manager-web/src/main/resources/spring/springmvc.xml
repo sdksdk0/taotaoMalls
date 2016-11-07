@@ -27,5 +27,12 @@
 		<property name="maxUploadSize" value="5242880"></property>
 	</bean>
 	
+	<!-- 拦截器配置 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/order/**"/>
+			<bean class="cn.tf.taotao.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 </beans>

@@ -67,7 +67,6 @@ public class ItemController {
 	@RequestMapping(value="/rest/item/update",method=RequestMethod.POST)
 	@ResponseBody
 	public TaotaoResult updateItem(TbItem item, TbItemDesc desc, TbItemParamItem itemParams){
-		
 		TaotaoResult result=itemService.updateItem(item,desc,itemParams);
 		return result;
 	}
@@ -77,15 +76,13 @@ public class ItemController {
 	@ResponseBody
 	public TaotaoResult  instockItem(String ids){
 		return itemService.instockItem(ids);
-		
 	}
 	
 	//上架
 	@RequestMapping("/rest/item/reshelf")
 	@ResponseBody
 	public TaotaoResult  reshelfItem(String ids){
-		return itemService.reshelfItem(ids);
-		
+		return itemService.reshelfItem(ids);	
 	}
 
 }

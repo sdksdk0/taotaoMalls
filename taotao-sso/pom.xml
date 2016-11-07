@@ -73,9 +73,9 @@
 				<configuration>
 					<port>8087</port>
 					<path>/</path>
-					<url>http://139.199.158.214:8103/manager/text</url>
+					<!-- <url>http://139.199.158.214:8103/manager/text</url>
 					<username>tf</username>
-					<password>admin1</password>
+					<password>admin1</password> -->
 				</configuration>
 			</plugin>
 

@@ -27,7 +27,7 @@
         </ul>
         <div class="extra">
         <span>我已经注册，现在就&nbsp;
-        	<a href="/user/showLogin" class="flk13">登录</a>
+        	<a href="/user/admin/showLogin" class="flk13">管理员登录</a>
         </span>
         </div>
     </div>
@@ -148,12 +148,12 @@
 		beforeSubmit:function() {
 				//检查用户是否已经被占用
 				$.ajax({
-	            	url : REGISTER.param.surl + "/user/check/"+escape($("#regName").val())+"/1?r=" + Math.random(),  //浏览器缓存，每次地址不一样
+	            	url : REGISTER.param.surl + "/user/admin/check/"+escape($("#regName").val())+"/1?r=" + Math.random(),  //浏览器缓存，每次地址不一样
 	            	success : function(data) {
 	            		if (data.data) {
 	            			//检查手机号是否存在
 	            			$.ajax({
-	            				url : REGISTER.param.surl + "/user/check/"+$("#phone").val()+"/2?r=" + Math.random(),
+	            				url : REGISTER.param.surl + "/user/admin/check/"+$("#phone").val()+"/2?r=" + Math.random(),
 				            	success : function(data) {
 				            		if (data.data) {
 					            		REGISTER.doSubmit();
@@ -172,7 +172,7 @@
 	            	
 		},
 		doSubmit:function() {
-			$.post("/user/register",$("#personRegForm").serialize(), function(data){
+			$.post("/user/admin/register",$("#personRegForm").serialize(), function(data){
 				if(data.status == 200){
 					alert('用户注册成功，请登录！');
 					REGISTER.login();
@@ -182,7 +182,7 @@
 			});
 		},
 		login:function() {
-			 location.href = "/page/login";
+			 location.href = "/page/admin/login";
 			 return false;
 		},
 		reg:function() {

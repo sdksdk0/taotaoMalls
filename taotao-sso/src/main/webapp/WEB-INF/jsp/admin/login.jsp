@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="free-regist">
-            <span><a href="/page/register" clstag="passport|keycount|login|08">免费注册&gt;&gt;</a></span>
+            <span><a href="/page/admin/register" clstag="passport|keycount|login|08">管理员免费注册&gt;&gt;</a></span>
         </div>
     </div>
 </form>
@@ -75,11 +75,11 @@
 				return true;
 			},
 			doLogin:function() {
-				$.post("/user/login", $("#formlogin").serialize(),function(data){
+				$.post("/user/admin/login", $("#formlogin").serialize(),function(data){
 					if (data.status == 200) {
 						//alert("登录成功！");
 						if (redirectUrl == "") {
-							location.href = "http://taotao.tianfang1314.cn";
+							location.href = "http://localhost:8083";
 						} else {
 							location.href = redirectUrl;
 						}
