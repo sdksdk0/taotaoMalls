@@ -130,8 +130,29 @@ public class ItemServiceImpl implements ItemService{
 	//删除商品
 	@Override
 	public TaotaoResult deleteItem(String ids) {
-		
 		try {
+			String[] idsArray = ids.split(",");
+			List<Long> values = new ArrayList<Long>();
+			for(String id : idsArray) {
+				values.add(Long.parseLong(id));
+			}
+			TbItemExample e = new TbItemExample();
+			TbItemExample.Criteria c = e.createCriteria();
+			c.andIdIn(values);
+		
+			List<TbItem> list = itemMapper.selectByExample(e);
+			if(list!=null && list.size()>0){
+				TbItem item=list.get(0);
+				item.setStatus((byte)3);
+				itemMapper.updateByExample(item, e);
+			}
+			return TaotaoResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		/*try {
 			String[] idsArray = ids.split(",");
 			List<Long> values = new ArrayList<Long>();
 			for(String id : idsArray) {
@@ -151,7 +172,7 @@ public class ItemServiceImpl implements ItemService{
 			e.printStackTrace();
 			return null;
 		}
-		return TaotaoResult.ok();
+		return TaotaoResult.ok(); */
 	}
 
 

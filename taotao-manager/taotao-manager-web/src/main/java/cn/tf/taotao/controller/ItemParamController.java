@@ -58,5 +58,13 @@ public class ItemParamController {
 	}
 		
 	
+	//删除商品规格参数模板
+	@RequestMapping("/delete")
+	@ResponseBody
+	public TaotaoResult  deleteParam(String ids){
+		return itemParamService.deleteParam(ids);
+		
+	}
+	
 
 }

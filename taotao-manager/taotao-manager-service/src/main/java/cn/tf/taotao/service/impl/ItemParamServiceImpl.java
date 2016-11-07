@@ -1,5 +1,6 @@
 package cn.tf.taotao.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,11 +12,14 @@ import com.github.pagehelper.PageInfo;
 
 import cn.tf.taotao.common.pojo.EUDResult;
 import cn.tf.taotao.common.utils.TaotaoResult;
+import cn.tf.taotao.mapper.TbItemCatMapper;
 import cn.tf.taotao.mapper.TbItemMapper;
 import cn.tf.taotao.mapper.TbItemParamItemMapper;
 import cn.tf.taotao.mapper.TbItemParamMapper;
 import cn.tf.taotao.po.TbItem;
+import cn.tf.taotao.po.TbItemCat;
 import cn.tf.taotao.po.TbItemCatExample;
+import cn.tf.taotao.po.TbItemDescExample;
 import cn.tf.taotao.po.TbItemExample;
 import cn.tf.taotao.po.TbItemParam;
 import cn.tf.taotao.po.TbItemParamExample;
@@ -35,6 +39,8 @@ public class ItemParamServiceImpl implements ItemParamService{
 	private TbItemMapper  itemMapper;
 	@Autowired
 	private TbItemParamItemMapper  itemParamItemMapper;
+	@Autowired
+	private TbItemCatMapper itemCatMapper;
 	
 	
 	@Override
@@ -66,13 +72,26 @@ public class ItemParamServiceImpl implements ItemParamService{
 	@Override
 	public EUDResult getItemList(int page, int rows) {
 		TbItemParamExample example=new TbItemParamExample();
+		TbItemCatExample example1=new TbItemCatExample();
 		PageHelper.startPage(page, rows);
 		
+		EUDResult result=new EUDResult();
 		
 		List<TbItemParam> list = itemParamMapper.selectByExample(example);
+		/*if(list!=null && list.size()>0){
+			for (TbItemParam item : list) {
+				Long itemId = item.getItemCatId();
+				cn.tf.taotao.po.TbItemCatExample.Criteria createCriteria = example1.createCriteria();
+				createCriteria.andIdEqualTo(itemId);
+				List<TbItemCat> list1 = itemCatMapper.selectByExample(example1);
+				
+				result.setRows(list1);
+				
+			}
 
-		EUDResult result=new EUDResult();
+		}*/
 		result.setRows(list);
+		
 		PageInfo<TbItemParam>  pageInfo=new PageInfo<TbItemParam>(list);
 		result.setTotal(pageInfo.getTotal());
 		return result;
@@ -108,6 +127,28 @@ public class ItemParamServiceImpl implements ItemParamService{
 			
 		}
 		return null;
+	}
+
+
+	@Override
+	public TaotaoResult deleteParam(String ids) {
+		try {
+			String[] idsArray = ids.split(",");
+			List<Long> values = new ArrayList<Long>();
+			for(String id : idsArray) {
+				values.add(Long.parseLong(id));
+			}
+			TbItemParamExample e = new TbItemParamExample();
+			TbItemParamExample.Criteria c = e.createCriteria();
+			c.andIdIn(values);
+			itemParamMapper.deleteByExample(e);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return TaotaoResult.ok();
 	}
 
 }

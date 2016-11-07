@@ -14,5 +14,9 @@ public interface ItemParamService {
 	EUDResult getItemList(int page,int rows);
 	
 	TbItemParamItem listParamDesc(Long id);
+	/*
+	 * 删除
+	 */
+	TaotaoResult deleteParam(String ids);
 	
 }

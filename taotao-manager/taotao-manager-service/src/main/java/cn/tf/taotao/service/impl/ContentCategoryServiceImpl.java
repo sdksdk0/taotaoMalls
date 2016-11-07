@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.tf.taotao.common.pojo.ContentCatTreeNode;
 import cn.tf.taotao.common.pojo.EUTreeNode;
 import cn.tf.taotao.common.utils.TaotaoResult;
 import cn.tf.taotao.mapper.TbContentCategoryMapper;
@@ -21,26 +22,27 @@ public class ContentCategoryServiceImpl implements  ContentCategoryService{
 	@Autowired
 	private TbContentCategoryMapper contentCategoryMapper;
 	
-	
 	@Override
-	public List<EUTreeNode> getCategoryList(long parentId) {
-		TbContentCategoryExample example=new TbContentCategoryExample();
+	public List<ContentCatTreeNode> getCategoryList(long parentId) {
+		// 根据parentId查询数据库
+		TbContentCategoryExample example = new TbContentCategoryExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andParentIdEqualTo(parentId);
-		//根据parentid查询节点列表
-		List<TbContentCategory> list = contentCategoryMapper.selectByExample(example);
-		List<EUTreeNode> resultList=new ArrayList<>();
-		
-		for (TbContentCategory tbContentCategory : list) {
-			EUTreeNode node=new EUTreeNode();
-			node.setId(tbContentCategory.getId());
-			node.setText(tbContentCategory.getName());
-			node.setState(tbContentCategory.getIsParent()?"closed":"open");
-			resultList.add(node);
+		List<TbContentCategory> list = contentCategoryMapper
+				.selectByExample(example);
+		// 创建返回值list 并包装数据
+		List<ContentCatTreeNode> listResult = new ArrayList<ContentCatTreeNode>();
+		for (TbContentCategory contentCategory : list) {
+			ContentCatTreeNode node = new ContentCatTreeNode();
+			node.setId(contentCategory.getId());
+			node.setState(contentCategory.getIsParent() ? "closed" : "open");
+			node.setText(contentCategory.getName());
+			node.setParentId(parentId);
+			listResult.add(node);
 		}
-		return resultList;
+		return listResult;
 	}
-
+	
 
 	@Override
 	public TaotaoResult insertContentCategory(long parentId, String name) {
@@ -62,6 +64,51 @@ public class ContentCategoryServiceImpl implements  ContentCategoryService{
 			contentCategoryMapper.updateByPrimaryKey(parentCat);
 		}
 		return TaotaoResult.ok(contentCategory);
+	}
+
+	//删除节点
+	@Override
+	public TaotaoResult deleteContentCategory(Long parentId, Long id) {
+		
+		contentCategoryMapper.deleteByPrimaryKey(id);
+		// 判断父节点下是否还有子节点
+		TbContentCategoryExample example = new TbContentCategoryExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andParentIdEqualTo(parentId);
+		List<TbContentCategory> list = contentCategoryMapper
+				.selectByExample(example);
+		// 父节点
+		TbContentCategory parentCat = contentCategoryMapper
+				.selectByPrimaryKey(parentId);
+		// 如果没有子节点，设置为false
+		if (list != null && list.size() > 0) {
+			parentCat.setIsParent(true);
+		} else {
+			parentCat.setIsParent(false);
+		}
+		return TaotaoResult.ok();
+	}
+
+
+	//更新
+	@Override
+	public TaotaoResult updateContentCategory(Long id, String name) {
+		TbContentCategory tcc = contentCategoryMapper.selectByPrimaryKey(id);
+		
+		TbContentCategory  contentCategory=new TbContentCategory();
+		contentCategory.setCreated(tcc.getCreated());
+		contentCategory.setId(id);
+		contentCategory.setIsParent(tcc.getIsParent());
+		contentCategory.setName(name);
+		contentCategory.setParentId(tcc.getParentId());
+		contentCategory.setSortOrder(tcc.getSortOrder());
+		contentCategory.setStatus(tcc.getStatus());
+		contentCategory.setUpdated(new Date());
+		
+		contentCategoryMapper.updateByPrimaryKey(contentCategory);
+		return TaotaoResult.ok();
+		
+		
 	}
 
 }
