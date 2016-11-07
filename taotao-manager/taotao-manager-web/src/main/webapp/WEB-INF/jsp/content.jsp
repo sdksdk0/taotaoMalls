@@ -9,6 +9,7 @@
             <table class="easyui-datagrid" id="contentList" data-options="toolbar:contentListToolbar,singleSelect:false,collapsible:true,pagination:true,method:'get',pageSize:20,url:'/content/query/list',queryParams:{categoryId:0}">
 		    <thead>
 		        <tr>
+		        	<th data-options="field:'ck',checkbox:true"></th>
 		            <th data-options="field:'id',width:30">ID</th>
 		            <th data-options="field:'title',width:120">内容标题</th>
 		            <th data-options="field:'subTitle',width:100">内容子标题</th>

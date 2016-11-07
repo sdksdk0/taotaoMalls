@@ -192,7 +192,9 @@ public class ItemServiceImpl implements ItemService{
 			TbItemExample e = new TbItemExample();
 			Criteria c = e.createCriteria();
 			c.andIdEqualTo(item.getId());
-			item.setCreated(new Date());
+			
+			TbItem tbItem = itemMapper.selectByPrimaryKey(item.getId());
+			item.setCreated(tbItem.getCreated());
 			item.setUpdated(new Date());
 			item.setStatus((byte)1);
 			itemMapper.updateByExample(item, e);
@@ -202,7 +204,8 @@ public class ItemServiceImpl implements ItemService{
 			cn.tf.taotao.po.TbItemDescExample.Criteria criteria = de.createCriteria();
 			criteria.andItemIdEqualTo(item.getId());
 			desc.setItemId(item.getId());
-			desc.setCreated(new Date());
+			
+			desc.setCreated(tbItem.getCreated());
 			desc.setUpdated(new Date());
 			itemDescMapper.updateByExample(desc, de);
 			
