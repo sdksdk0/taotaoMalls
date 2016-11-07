@@ -9,13 +9,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.tf.taotao.common.utils.CookieUtils;
 import cn.tf.taotao.po.TbAdminUser;
+import cn.tf.taotao.service.AdminService;
 import cn.tf.taotao.service.impl.AdminServiceImpl;
+
+
 
 
 public class LoginInterceptor implements  HandlerInterceptor{
 
 	@Autowired
-	private  AdminServiceImpl adminServiceImpl;
+	private  AdminService adminServiceImpl;
 	
 	//在handler执行之前处理
 	@Override

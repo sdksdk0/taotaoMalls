@@ -107,6 +107,12 @@ public class ContentServiceImpl implements ContentService {
 			content.setUpdated(new Date());
 
 			contentMapper.updateByExample(content, e);
+			//添加缓存同步逻辑
+			try {
+				HttpClientUtil.doGet(REST_CONTENT_SYNC_URL+REST_CONTENT_SYNC_URL+content.getCategoryId());
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

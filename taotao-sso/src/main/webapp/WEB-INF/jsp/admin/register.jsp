@@ -27,7 +27,7 @@
         </ul>
         <div class="extra">
         <span>我已经注册，现在就&nbsp;
-        	<a href="/user/admin/showLogin" class="flk13">管理员登录</a>
+        	<a href="/page/admin/login" class="flk13">管理员登录</a>
         </span>
         </div>
     </div>

@@ -30,9 +30,9 @@
 	<!-- 拦截器配置 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/order/**"/>
+			<mvc:mapping path="/**"/>
 			<bean class="cn.tf.taotao.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> 
 	
 </beans>
