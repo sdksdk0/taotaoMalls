@@ -13,4 +13,10 @@ public interface UserService {
 	TaotaoResult userLogin(String username,String password,HttpServletRequest  request,HttpServletResponse response);
 
 	TaotaoResult getUserByToken(String token);
+	
+	/*
+	 * 
+	 * 退出登录
+	 */
+	TaotaoResult userLogout(String token);
 }

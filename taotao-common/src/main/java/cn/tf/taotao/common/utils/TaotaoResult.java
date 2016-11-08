@@ -21,8 +21,35 @@ public class TaotaoResult {
 
     // 响应中的数据
     private Object data;
+    
+    private String md5;
+    
+    
+    
 
-    public static TaotaoResult build(Integer status, String msg, Object data) {
+    public TaotaoResult(Integer status, String msg, Object data, String md5) {
+		super();
+		this.status = status;
+		this.msg = msg;
+		this.data = data;
+		this.md5 = md5;
+	}
+
+	public TaotaoResult(Object data, String md5) {
+		super();
+		this.data = data;
+		this.md5 = md5;
+	}
+
+	public String getMd5() {
+		return md5;
+	}
+
+	public void setMd5(String md5) {
+		this.md5 = md5;
+	}
+
+	public static TaotaoResult build(Integer status, String msg, Object data) {
         return new TaotaoResult(status, msg, data);
     }
 

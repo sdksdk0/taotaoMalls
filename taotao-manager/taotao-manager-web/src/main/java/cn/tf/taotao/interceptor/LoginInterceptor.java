@@ -30,7 +30,7 @@ public class LoginInterceptor implements  HandlerInterceptor{
 		TbAdminUser user = adminServiceImpl.getUserByToken(token);
 		if(null==user){
 			//调到登录页面
-			response.sendRedirect("http://localhost:8087/page/admin/login");
+			response.sendRedirect("http://sso.tianfang1314.cn/page/admin/login");
 			return false;
 		}
 		//把用户信息放入Request

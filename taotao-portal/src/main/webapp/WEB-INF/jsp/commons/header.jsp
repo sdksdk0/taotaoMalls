@@ -22,7 +22,7 @@
 		<!--search end-->
 		<div id="my360buy-2013">
 			<dl>
-				<dt class="ld"><s></s><a href="http://sso.tianfang1314.cn/user/showLogin" clstag="homepage|keycount|home2012|04a">我的淘淘</a><b></b></dt>
+				<dt class="ld"><s></s><a href="http://sso.tianfang1314.cn/user/login" clstag="homepage|keycount|home2012|04a">我的淘淘</a><b></b></dt>
 				<dd>
 					<div class="loading-style1"><b></b>加载中，请稍候...</div>
 				</dd>

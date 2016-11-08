@@ -14,21 +14,21 @@ import cn.tf.taotao.portal.service.impl.UserServiceImpl;
 public class LoginInterceptor implements  HandlerInterceptor{
 
 	@Autowired
-	private  UserServiceImpl userServiceImpl;
+	private  UserServiceImpl userService;
 	
-	//在handler执行之前处理
+	//在handler执行之前处理  
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		//返回值决定handler是否执行
 		//判断用户是否登陆，从cookie中取token，根据token获取用户信息，调用sso系统的接口。
 		String token=CookieUtils.getCookieValue(request, "TT_TOKEN");
-		TbUser user = userServiceImpl.getUserByToken(token);
+		TbUser user = userService.getUserByToken(token);
 		if(null==user){
 			//调到登录页面
-			response.sendRedirect(userServiceImpl.SSO_INTERCEPTOR+userServiceImpl.SSO_PAGE_LOGIN
+			response.sendRedirect(userService.SSO_INTERCEPTOR+userService.SSO_PAGE_LOGIN
 					+"?redirect="+request.getRequestURI());
-			return false;
+			return false;  
 		}
 		//把用户信息放入Request
 		request.setAttribute("user", user);

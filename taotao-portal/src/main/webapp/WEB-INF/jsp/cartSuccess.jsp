@@ -15,7 +15,7 @@
 	<br />
 	<center><a href="/cart/cart.html"  >去结算</a></center>
 	<br />
-	<center><a href="http://115.28.16.234:8104/"  >继续购物</a></center>
+	<center><a href="http://taotao.tianfang1314.cn/"  >继续购物</a></center>
 	<br />
 	<br />
 	<br />

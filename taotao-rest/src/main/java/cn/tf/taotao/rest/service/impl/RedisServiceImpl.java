@@ -14,27 +14,6 @@ import redis.clients.jedis.JedisCluster;
 @Service
 public class RedisServiceImpl implements RedisService{
 	
-	/*@Autowired
-	private JedisCluster jedisCluster;
-
-	@Value("${INDEX_CONTENT_REDIS_KEY}")
-	private String INDEX_CONTENT_REDIS_KEY;
-	
-	
-	@Override
-	public TaotaoResult syncContent(long contentCid) {
-		try {
-			jedisCluster.hdel(INDEX_CONTENT_REDIS_KEY,contentCid+"");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
-			
-		}
-		
-		return TaotaoResult.ok();
-	}*/
-	
-	
 	@Autowired
 	private JedisClient jedisClient;
 	

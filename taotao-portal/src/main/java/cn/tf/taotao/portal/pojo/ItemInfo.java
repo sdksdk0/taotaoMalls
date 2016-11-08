@@ -1,7 +1,5 @@
 package cn.tf.taotao.portal.pojo;
 
-import java.awt.Image;
-
 import cn.tf.taotao.po.TbItem;
 
 public class ItemInfo extends TbItem{

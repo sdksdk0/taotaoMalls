@@ -30,8 +30,7 @@ public class ContentController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
-		}
-				
+		}		
 	}
 	
 
