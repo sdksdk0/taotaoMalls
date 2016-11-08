@@ -23,6 +23,9 @@ public class UserServiceImpl implements  UserService{
 	@Value("${SSO_INTERCEPTOR}")
 	public String SSO_INTERCEPTOR;
 	
+	@Value("${TAOTAO_MAIN}")
+	public String TAOTAO_MAIN;
+	
 	
 	@Override
 	public TbUser getUserByToken(String token) {

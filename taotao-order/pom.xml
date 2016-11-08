@@ -80,9 +80,9 @@
 				<configuration>
 					<port>8088</port>
 					<path>/order</path>
-					<!-- <url>http://139.199.158.214:8101/manager/text</url>
+					 <url>http://139.199.158.214:8101/manager/text</url>
 					<username>tf</username>
-					<password>admin1</password>  -->
+					<password>admin1</password> 
 				</configuration>
 			</plugin>
 			

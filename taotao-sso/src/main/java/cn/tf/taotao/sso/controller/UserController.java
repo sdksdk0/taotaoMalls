@@ -134,7 +134,8 @@ public class UserController {
 			e.printStackTrace();
 			result = TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
 		}
-		// 判断是否为jsonp调用
+		
+
 		if (StringUtils.isBlank(callback)) {
 			return result;
 		} else {

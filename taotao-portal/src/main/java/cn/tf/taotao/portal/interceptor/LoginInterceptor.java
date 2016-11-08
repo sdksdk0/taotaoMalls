@@ -27,7 +27,7 @@ public class LoginInterceptor implements  HandlerInterceptor{
 		if(null==user){
 			//调到登录页面
 			response.sendRedirect(userService.SSO_INTERCEPTOR+userService.SSO_PAGE_LOGIN
-					+"?redirect="+request.getRequestURI());
+					+"?redirect="+userService.TAOTAO_MAIN+request.getRequestURI());
 			return false;  
 		}
 		//把用户信息放入Request
