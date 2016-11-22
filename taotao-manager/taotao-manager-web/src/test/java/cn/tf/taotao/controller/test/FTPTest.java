@@ -22,7 +22,7 @@ public class FTPTest {
 		FileInputStream inputStream=new FileInputStream(new File("C:\\Users\\asus\\Pictures\\pic\\a1.jpg"));
 		ftpClient.changeWorkingDirectory("/home/ftpuser/www/images");
 		ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-		ftpClient.storeFile("hello1.jpg", inputStream);
+		ftpClient.storeFile("hello2.jpg", inputStream);
 		//关闭连接
 		ftpClient.logout();
 	}
